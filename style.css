@@ -1,0 +1,70 @@
+body{
+    background-color: rgb(60, 70, 65);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.Calculator{
+    border: 2px solid black;
+    width: 500px;
+   height: 700px;
+   margin-top: 100px;
+   background-color: rgb(31, 37, 35);
+   border-radius: 20px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+.display{
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 440px;
+    height: 140px;
+    background-color: rgb(97, 158, 97);
+    margin-top: 25px;
+    text-align: right;
+    margin-bottom: 18px;
+}
+.numbers{
+    font-size: 60px;
+    margin-right: 15px;
+}
+.buttons{
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 440px;
+    height: 483px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.btn{
+    width: 70px;
+    height: 70px;
+    font-size: 40px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: lightgray;
+    transition: 0.2s ease-in;
+}
+#clear{
+    width: 165px;
+    height: 70px;
+    font-size: 40px;
+    background-color: coral;
+    font-weight: 700;
+}
+#operate{
+    width: 165px;
+    height: 70px;
+    font-size: 40px;
+    background-color: coral;
+    font-weight: 700;
+}
+.btn:hover{
+    transform: transform 0.1s;
+  transform: scale(1.05);
+}
