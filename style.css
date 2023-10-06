@@ -40,22 +40,16 @@ body{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-}
+}   
 .btn{
     width: 70px;
     height: 70px;
     font-size: 40px;
     margin: 10px;
     border-radius: 5px;
-    background-color: lightgray;
+    background-color: rgb(75, 72, 72);
+    color: white;
     transition: 0.2s ease-in;
-}
-#clear{
-    width: 165px;
-    height: 70px;
-    font-size: 40px;
-    background-color: coral;
-    font-weight: 700;
 }
 #operate{
     width: 165px;
@@ -63,8 +57,17 @@ body{
     font-size: 40px;
     background-color: coral;
     font-weight: 700;
+    color: black;
 }
 .btn:hover{
     transform: transform 0.1s;
   transform: scale(1.05);
 }
+/*#clear{
+    width: 165px;
+    height: 70px;
+    font-size: 40px;
+    background-color: coral;
+    font-weight: 700;
+    color: black;
+}*/
