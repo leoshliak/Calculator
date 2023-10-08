@@ -5,6 +5,7 @@ const display = document.querySelector('.display-value');
 const clear = document.querySelector('#clear');
 const backSpace = document.querySelector('#backspase');
 const equal = document.querySelector('#operate');
+ const point = document.querySelector('#point');
 let operator ;
 let numberOne = '';
 let numberTwo = '';
@@ -20,12 +21,57 @@ let result;
    display.innerHTML = '';
  }
 
+
+ function add(){
+  result = Number(numberOne) + Number(numberTwo);
+  display.innerHTML = result;
+  console.log(result);
+  return result;
+} 
+
+function subtract(){
+   result = Number(numberOne) - Number(numberTwo);
+   display.innerHTML = result;
+   console.log(result);
+   return result;
+}
+
+function multiply(){
+   result = Number(numberOne) * Number(numberTwo);
+   display.innerHTML = result;
+   console.log(result);
+   return result;
+}
+
+function divide(){
+  result = Number(numberOne) / Number(numberTwo);
+   display.innerHTML = result;
+   console.log(result);
+   return result;
+}  
+
+
+function operate(){
+   if(operator === '+'){
+    add()
+   }
+   if(operator === '-'){
+    subtract()
+   }
+   if(operator === '*'){
+    multiply()
+   }
+   if(operator === '/'){
+    divide()
+   }
+ }
+
  clear.addEventListener('click', () =>{
       clearAll();
     });
  
     btn.forEach(addEventListener('click', function(e){
-      if(!e.target.classList.contains('number') && !e.target.classList.contains('operator')) return;
+      if(!e.target.classList.contains('number') && !e.target.classList.contains('operator') && !e.target.classList.contains('point')) return;
       inputNumber(e.target.textContent);
     }));
          
@@ -34,58 +80,19 @@ let result;
     function inputNumber(num){
          if(numberTwo == '' &&  operator == undefined &&  num != '+' && num != '-' && num != '/' && num !='*'){
           numberOne += `${num}`;
+          display.innerHTML = numberOne;
          }
-       if(numberOne != '' && num == '+' || num == '-' || num == '/' || num =='*'){
+       if( num == '+' || num == '-' || num == '/' || num =='*'){
          operator = `${num}`;
-         numberOne += ''
+         numberOne += '';
+         display.innerHTML = `${numberOne} ${operator}`;
        }
-       if(operator != undefined && num != '+' && num != '-' && num != '/' && num !='*'){
+       if(operator != undefined && result == undefined && num != '+' && num != '-' && num != '/' && num !='*'){
          numberTwo += `${num}`;
-         numberOne += ''
+         numberOne += '';
+         display.innerHTML = `${numberOne} ${operator} ${numberTwo}`;
        }
        console.log(numberOne);
        console.log(operator);
        console.log(numberTwo);
     }
-
-     
-  
- function add(){
-   result = numberOne + numberTwo;
-   display.innerHTML = result;
-   console.log(  result);
-   return result;
-} 
-
- function subtract(){
-    result = numberOne - numberTwo;
-    display.innerHTML = result;
-    return result;
- }
-
- function multiply(){
-    result = numberOne * numberTwo;
-    display.innerHTML = result;
-    return result;
- }
-
- function divide(){
-   result = numberOne / numberTwo;
-    display.innerHTML = result;
-    return result;
- }  
-  
- function operate() {
-    if(operator = '+'){
-      return add();
-    }
-     if(operator = '-'){
-       return subtract();
-    }
-     if(operator = '*'){
-      return multiply();
-    }
-    if(operator = '/'){
-       return divide();
-    }
- }
