@@ -30,6 +30,9 @@ body{
 .display-value{
     font-size: 60px;
     margin-right: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
 }
 .buttons{
     border: 2px solid black;
