@@ -3,7 +3,7 @@ const numbers = document.querySelectorAll('.number');
 const operations= document.querySelectorAll('.operator');
 const display = document.querySelector('.display-value');
 const clear = document.querySelector('#clear');
-const backSpace = document.querySelector('#backspase');
+const backSpace = document.querySelector('#backspace');
 const equal = document.querySelector('#operate');
  const point = document.querySelector('#point');
 let operator ;
@@ -20,6 +20,24 @@ let result;
    display.innerHTML = '';
  }
 
+   function clearOne(){
+    if(numberOne != '' && operator == undefined){
+      pon = numberOne.substring(0, numberOne.length - 1)
+      console.log(pon)
+     numberOne = `${pon}`
+     display.innerHTML = `${numberOne}`
+    }
+    if( operator != undefined && numberTwo == ''){
+      operator = undefined;
+      display.innerHTML = `${numberOne}`
+    }
+    if(numberTwo != '' && operator != undefined){
+      pon2 = numberTwo.substring(0, numberTwo.length - 1)
+      console.log(pon2)
+      numberTwo = `${pon2}`
+     display.innerHTML = `${numberOne} ${operator} ${numberTwo}`
+    }
+  }
 
  
   function add(){
@@ -102,9 +120,9 @@ function divide(){
              display.innerHTML = -0.1;
     }
    }
-   numberOne = result
-   numberTwo = ''
-   operator = undefined;
+     numberOne = result
+     numberTwo = ''
+     operator = undefined;
  }
 
 
@@ -113,7 +131,7 @@ function divide(){
     });
  
     btn.forEach(addEventListener('click', function(e){
-      if(!e.target.classList.contains('number') && !e.target.classList.contains('operator') && !e.target.classList.contains('point')) return;
+      if(!e.target.classList.contains('number') && !e.target.classList.contains('operator') && !e.target.classList.contains('point'))return;
       inputNumber(e.target.textContent); 
     }));
          
@@ -135,6 +153,13 @@ function divide(){
          display.innerHTML = `${numberOne} ${operator} ${numberTwo}`;
        }
        if(result != undefined && (num == '+' || num == '-' || num == '/' || num =='*')){
+        numberOne == `${result}`;
+        operator = `${num}`;
+        result = undefined;
+        display.innerHTML = `${numberOne} ${operator} `;
+       }
+       if(operator != undefined && numberTwo != '' && (num == '+' || num == '-' || num == '/' || num =='*')){
+        operate();
         numberOne == `${result}`;
         operator = `${num}`;
         result = undefined;
