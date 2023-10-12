@@ -9,6 +9,8 @@ const equal = document.querySelector('#operate');
 let operator ;
 let numberOne = '';
 let numberTwo = '';
+ let negativeOne = false;
+ let negativeTwo = false;
 let result;
 
 
@@ -39,6 +41,41 @@ let result;
     }
   }
 
+   function toNegative(){
+    if(numberOne != '' && numberTwo == '' && negativeOne == false && operator == undefined && result == undefined){
+      numberOne = '-' + numberOne
+      negativeOne = true
+      display.innerHTML = numberOne;
+      }
+      else if(numberOne != '' && numberTwo == '' &&  operator == undefined &&  negativeOne == true && result == undefined){
+      numberOne = numberOne.replace('-','');
+      negativeOne = false
+      display.innerHTML = numberOne;
+    }
+     else if(numberOne != '' && numberTwo == '' && negativeOne == false && operator == undefined && result != undefined){
+      numberOne = '-' + `${result}`
+      result = undefined
+      negativeOne = true
+      display.innerHTML = numberOne;
+     }
+     else if(numberOne != '' && numberTwo == '' &&  operator == undefined &&  negativeOne == true && result != undefined){
+      numberOne = `${result}`;
+      numberOne = numberOne.replace('-','');
+      result = undefined;
+      negativeOne = false;
+      display.innerHTML = numberOne;
+     }
+     if(operator != undefined && numberTwo != '' && negativeTwo == false && result == undefined){
+        numberTwo = '-' + numberTwo;
+        negativeTwo = true;
+        display.innerHTML = `${numberOne} ${operator} ${numberTwo}`;
+     }
+     else if(operator != undefined && numberTwo != '' && negativeTwo == true && result == undefined){
+      numberTwo = numberTwo.replace('-', '');
+      negativeTwo = false;
+      display.innerHTML = `${numberOne} ${operator} ${numberTwo}`;
+     }
+   }
  
   function add(){
   result = Number(numberOne) + Number(numberTwo);
@@ -123,6 +160,11 @@ function divide(){
      numberOne = result
      numberTwo = ''
      operator = undefined;
+     if(result < 0){
+       negativeOne = true;
+     } else if(result > 0) {
+      negativeOne = false;
+     }
  }
 
 
@@ -153,14 +195,14 @@ function divide(){
          display.innerHTML = `${numberOne} ${operator} ${numberTwo}`;
        }
        if(result != undefined && (num == '+' || num == '-' || num == '/' || num =='*')){
-        numberOne == `${result}`;
+        numberOne = `${result}`;
         operator = `${num}`;
         result = undefined;
         display.innerHTML = `${numberOne} ${operator} `;
        }
        if(operator != undefined && numberTwo != '' && (num == '+' || num == '-' || num == '/' || num =='*')){
         operate();
-        numberOne == `${result}`;
+        numberOne = `${result}`;
         operator = `${num}`;
         result = undefined;
         display.innerHTML = `${numberOne} ${operator} `;
